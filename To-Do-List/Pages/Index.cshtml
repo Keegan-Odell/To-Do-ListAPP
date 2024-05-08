@@ -1,0 +1,9 @@
+﻿@page
+@model IndexModel
+
+<h2>Counter: @Model.Counter</h2>
+
+<form method="post">
+    <button type="submit" asp-page-handler="Up">Increment</button>
+    <button type="submit" asp-page-handler="Down">Decrement</button>
+</form>

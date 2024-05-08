@@ -1,0 +1,43 @@
+﻿@page
+@model To_Do_List.Pages.MeowModel
+@{
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h3 class="display-4">To-Do List</h3>
+    </div>
+
+    <form method="post" class="mt-4">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter a chore" asp-for="ChoreName" value="@Model.ChoreName">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" asp-page-handler="Add">Add To-Do</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="mt-4">
+        <h2 class="text-center mb-3">Chore List</h2>
+        <ul class="list-group">
+            @foreach (var chore in @Model.ChoreList)
+            {
+                <form method="post">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>@chore.ChoreName</span>
+                        <div>
+                            <input type="hidden" name="meowser" value="@chore.ChoreName"/>
+                            <button type="submit" asp-page-handler="Remove" class="btn btn-success mr-2">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                            <button type="submit" asp-page-handler="Remove" class="btn btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </li>
+                </form>
+            }
+        </ul>
+    </div>
+</div>
+
